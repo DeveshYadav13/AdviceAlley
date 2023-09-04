@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
   const [advice, setAdvice] = useState("");
@@ -14,6 +14,10 @@ function App() {
     setAdvice(data.slip.advice);
     setCount(count=>count+1);
   }
+
+  useEffect(function(){
+    getAdvice();        // function to be executed at the beginning
+  },[]);                // dependency array
 
   return (
     <div>
