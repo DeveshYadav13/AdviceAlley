@@ -1,11 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
+  const [advice, setAdvice] = useState("");
+  const [count, setCount] = useState(0);
+
+  async function getAdvice(){
+    // Fetching the advice using API
+    const res = await fetch("https://api.adviceslip.com/advice");
+    const data = await res.json();
+
+    // State changes
+    setAdvice(data.slip.advice);
+    setCount(count=>count+1);
+  }
+
   return (
     <div>
-      <h1>Hello..</h1>
-      <button>Get advice</button>
+      <h1>{advice}</h1>
+      <button onClick={getAdvice}>Get more advice</button>
+      <p>
+        You have read <strong>{count}</strong> pieces of advice.
+      </p>
     </div>
   );
 }
