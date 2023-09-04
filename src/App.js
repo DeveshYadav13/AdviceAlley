@@ -20,7 +20,7 @@ function App() {
   },[]);                // dependency array
 
   return (
-    <div>
+    <div class="app">
       <h1>{advice}</h1>
       <button onClick={getAdvice}>Get more advice</button>
       <Message count = {count} />          
