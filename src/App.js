@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 function App() {
   const [advice, setAdvice] = useState("");
   const [count, setCount] = useState(-1);
+  var word = "piece";
 
   async function getAdvice(){
     // Fetching the advice using API
@@ -13,6 +14,9 @@ function App() {
     // State changes
     setAdvice(data.slip.advice);
     setCount(count=>count+1);
+    if(count>1){
+      word = "pieces";
+    }
   }
 
   useEffect(function(){
@@ -23,14 +27,14 @@ function App() {
     <div class="app">
       <h1>{advice}</h1>
       <button onClick={getAdvice}>Get more advice</button>
-      <Message count = {count} />          
+      <Message count = {count} word = {word} />          
     </div>
   );
 
   function Message(props){
     return(
       <p>
-        You have read <strong>{props.count}</strong> pieces of advice.
+        You have read <strong>{props.count}</strong> {props.word} of advice.
       </p>
     );
   }
