@@ -5,6 +5,7 @@ function App() {
   const [advice, setAdvice] = useState("");
   const [count, setCount] = useState(-1);
   var word = "piece";
+  const ele = 1;
 
   async function getAdvice(){
     // Fetching the advice using API
@@ -21,7 +22,7 @@ function App() {
 
   useEffect(function(){
     getAdvice();        // function to be executed at the beginning
-  },[]);                // dependency array
+  },[ele]);                // dependency array
 
   return (
     <div class="app">
